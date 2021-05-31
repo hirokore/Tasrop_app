@@ -109,7 +109,7 @@ $ rails s
 
 ## カタログ設計
 https://docs.google.com/spreadsheets/d/1J-nkKOKEZohB0Nv6G6RsLCyCyiUjqvmMTtA-eIQNtz8/edit?usp=sharing <br>
->シートタブ「アプリ説明」
+>シートタブ「カタログ設計」
 <br>
 ## テーブル定義書
 https://docs.google.com/spreadsheets/d/1J-nkKOKEZohB0Nv6G6RsLCyCyiUjqvmMTtA-eIQNtz8/edit?usp=sharing <br>
