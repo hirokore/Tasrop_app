@@ -1,7 +1,7 @@
 # README
 
 ## 「Tasrop」  
- ~Task for road to becoming professinal~ 
+ Task for road to becoming professinal
 <!-- リンク貼り付け予定 -->
   <br>
 <!-- <img src="./public/images/xxx.png" alt="投稿例" width='650px'>   -->
