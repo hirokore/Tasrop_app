@@ -133,7 +133,7 @@ https://docs.google.com/spreadsheets/d/1J-nkKOKEZohB0Nv6G6RsLCyCyiUjqvmMTtA-eIQN
 ## 使用Gem
 ※都度、追加予定
 - gem 'devise'  
-<!-- - gem 'ransack'   -->
+- gem 'ransack'  
 - gem 'kaminari'  
 <!-- - gem 'omniauth'  
 - gem 'omniauth-google-oauth2'  
