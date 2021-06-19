@@ -311,5 +311,6 @@ Devise.setup do |config|
 
   # googleで取得したOauth認証に必要な値（クライアントIDとシークレット）を読み込む
   config.omniauth :google_oauth2, ENV['GOOGLE_API_ID'], ENV['GOOGLE_API_SECRET'], name: :google
+  config.omniauth :facebook, ENV['FACEBOOK_API_ID'], ENV['FACEBOOK_API_SECRET'], name: :facebook
 
 end

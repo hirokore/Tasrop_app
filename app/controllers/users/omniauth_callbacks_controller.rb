@@ -8,6 +8,10 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     callback_from :google
   end
 
+  def facebook
+    callback_from :facebook
+  end
+
   # You should also create an action method in this controller like this:
   # def twitter
   # end
