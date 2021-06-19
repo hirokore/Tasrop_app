@@ -22,5 +22,7 @@ Rails.application.routes.draw do
       get 'contact'
     end
   end
+  resources :conversations do
+  end
 
 end
