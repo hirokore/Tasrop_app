@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+  # 写真利用機能
+  mount_uploader :image, ImageUploader
+
   # 繋がり機能
   has_many :active_relationships, foreign_key: 'follower_id', class_name: 'Relationship', dependent: :destroy
   has_many :passive_relationships, foreign_key: 'followed_id', class_name: 'Relationship', dependent: :destroy
