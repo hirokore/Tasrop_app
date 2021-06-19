@@ -6,7 +6,10 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
-  def show
+  def edit
+    @user = User.find(params[:id])
+    role_change!(@user,params[:role])
+    redirect_to users_path, notice: "権限変更完了"
   end
 
   def follow
