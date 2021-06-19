@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     post 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'
   end
   resources :users, only: [:show, :index]
+  resources :relationships, only: [:create, :destroy]
 
   resources :tops, only: [:index, :create] do
     collection do
