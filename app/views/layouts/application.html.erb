@@ -22,6 +22,12 @@
         <%= link_to "お問い合わせ", contact_tops_path %>
       <% end %>
     </header>
+    <% if notice %>
+      <p class="alert alert-notice"><%= notice %></p>
+    <% end %>
+    <% if alert %>
+      <p class="alert alert-error"><%= alert %></p>
+    <% end %>
   <body>
     <%= yield %>
   </body>
