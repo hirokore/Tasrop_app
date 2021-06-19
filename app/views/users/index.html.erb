@@ -3,15 +3,21 @@
   <table>
     <th>表示名</th>
     <th>メルアド</th>
-    <th>管理者権限</th>
-    <th></th>
+    <% @users.each do | user |%>
+      <% unless user.admin? || user == current_user%>
+        <tr>
+          <td><%= user.name%></td>
+          <td><%= user.email%></td>
+          <td></td>
+        </tr>
+        <% end %>
+    <% end %>
   </table>
 <% else %>
-  <h1>DMページ</h1>
+  <h1>DM</h1>
 <% end %>
 
 <h2>相互フォローリスト</h2>
-
 
 <h2>ユーザー</h2>
 <% @users.each do |user| %>
