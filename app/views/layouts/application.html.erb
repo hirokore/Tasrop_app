@@ -8,8 +8,32 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
+    <header>
+      <% if user_signed_in? %>
+        <%#= link_to "マイタスク", custom_path(current_user) %>
+        <%#= link_to "マイページ", current_user %>
+        <%= link_to "ご利用ガイド", tutorial_tops_path %>
+        <%= link_to "お問い合わせ", contact_tops_path %>
+        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+      <% else %>
+        <%= link_to "新規登録", new_user_registration_path %>
+        <%= link_to "ログイン", new_user_session_path %>
+        <%= link_to "ご利用ガイド", tutorial_tops_path %>
+        <%= link_to "お問い合わせ", contact_tops_path %>
+      <% end %>
+    </header>
+    <% if notice %>
+      <p class="alert alert-notice"><%= notice %></p>
+    <% end %>
+    <% if alert %>
+      <p class="alert alert-error"><%= alert %></p>
+    <% end %>
   <body>
     <%= yield %>
   </body>
+  <footer>
+    <div>
+      ©︎ 2021 Tasrop , Inc.
+    </div>
+  </footer>
 </html>
