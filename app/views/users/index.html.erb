@@ -1,0 +1,15 @@
+<% if current_user.admin? %>
+  <h1>管理者ページ</h1>
+  <table>
+    <th>表示名</th>
+    <th>メルアド</th>
+    <th>管理者権限</th>
+    <th></th>
+  </table>
+<% else %>
+  <h1>DMページ</h1>
+<% end %>
+
+<h2>相互フォローリスト</h2>
+
+
