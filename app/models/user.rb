@@ -66,4 +66,18 @@ class User < ApplicationRecord
   def self.name_tag
     rand(1..9999)
   end
+  # パスワード入力なしでユーザー情報を更新
+  def update_without_current_password(params, *options)
+    params.delete(:current_password)
+
+    if params[:password].blank? && params[:password_confirmation].blank?
+      params.delete(:password)
+      params.delete(:password_confirmation)
+    end
+
+    result = update_attributes(params, *options)
+    clean_up_passwords
+    result
+  end
+
 end
