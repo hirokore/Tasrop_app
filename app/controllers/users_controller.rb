@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[ show ]
+  before_action :move_to_signed_in
 
   def index
     @users = User.all
