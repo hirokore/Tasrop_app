@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[ show follow followed ]
+  before_action :set_user, only: %i[ show follow followed destroy]
   before_action :move_to_signed_in
 
   def index
@@ -10,6 +10,11 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     role_change!(@user,params[:role])
     redirect_to users_path, notice: "権限変更完了"
+  end
+
+  def destroy
+    @user.destroy
+    redirect_to users_path, notice: "削除完了"
   end
 
   def follow
