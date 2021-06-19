@@ -13,13 +13,15 @@
 <h2>相互フォローリスト</h2>
 
 
-<th>メルアド</th>
-<% @users.each do | user |%>
-  <tr>
-    <td><%= user.email %></td>
-    <td><%= user.email if not user.admin? %></td>
-    <td>
-      <%= render 'follow_form', user: user %>
-    </td>
-  </tr>
-<% end %>
+<h2>ユーザー</h2>
+<% @users.each do |user| %>
+  <% if user.id != current_user.id %>
+    <li>
+      <div class="item">
+        <%= link_to user.email, user %>
+        <%= link_to 'メッセージ', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: :post %>
+      </div>
+    </li>
+    <li><%= render 'follow_form', user: user %></li>
+  <% end %>
+<% end %> 
