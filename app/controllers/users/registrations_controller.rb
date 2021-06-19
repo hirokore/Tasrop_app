@@ -10,6 +10,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
       redirect_to root_path, alert: 'ゲストユーザーは削除できません。'
     end
   end
+
+  def build_resource(hash={})
+    hash[:uid] = User.create_unique_string
+    super
+  end
   
   # GET /resource/sign_up
   # def new
