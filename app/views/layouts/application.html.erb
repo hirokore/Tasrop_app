@@ -22,6 +22,11 @@
         <%= link_to "お問い合わせ", contact_tops_path %>
       <% end %>
     </header>
+    <% if user_signed_in? %>
+      <div class="col-2">
+        <%= render'layouts/sidebar' %>
+      </div>
+    <% end %>
     <% if notice %>
       <p class="alert alert-notice"><%= notice %></p>
     <% end %>
