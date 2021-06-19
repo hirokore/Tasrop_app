@@ -18,6 +18,7 @@ gem 'devise-i18n'
 gem 'slack-notifier'
 gem 'omniauth', '1.9.1'
 gem 'omniauth-google-oauth2'
+gem 'omniauth-facebook'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
