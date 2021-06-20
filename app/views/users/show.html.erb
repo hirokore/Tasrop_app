@@ -18,4 +18,7 @@
 <% @tags.each do |tag| %>
   <div class=""><%= tag.name %></div>
   <div class=""><%= tag.total_time %></div>
+  <div class="progress-percentage text-xs-center"><%= tag.total_time %>時間/10000時間</div>
+  <progress class="progress progress-striped" max="10000" value=<%= tag.total_time %>></progress>
+
 <% end %> 
