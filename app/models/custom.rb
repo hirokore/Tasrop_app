@@ -15,6 +15,18 @@ class Custom < ApplicationRecord
     TaskStatus.create!(user_id: user_id, task_id: task_id, use_picture: use_picture, use_comment: use_comment)
   end
 
+  def self.task_status_update(custom, task_id, status)
+    task = Task.find(task_id)
+    task_status = status
+    use_picture = custom.use_picture
+    # picture = syori
+    use_comment = custom.use_comment
+    # comment = shori
+    # permit = syori #これも追加すること 「permit: permit」
+    # mentor = custom.mentor_id #これも追加すること「mentor_id: mentor」
+    TaskStatus.update!(task_status: task_status, task_id: task_id, use_picture: use_picture, use_comment: use_comment, picture: picture, comment: comment)
+  end
+  
   # 作り忘れた過去分を設定する機能（未実装）
   def self.task_status_create_old(custom,task_id)
     task = Task.find(task_id)
