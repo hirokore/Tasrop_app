@@ -5,11 +5,36 @@
     <th>メルアド</th>
     <th>管理者権限</th>
     <th></th>
+    <% @users.each do | user |%>
+      <% unless user == current_user%>
+        <tr>
+          <td><%= user.name%></td>
+          <td><%= user.email%></td>
+          <% if user.admin? %>
+            <td><%= link_to "解除", edit_user_path(user,role: "user") %></td>
+          <% elsif user.user? %>
+            <td><%= link_to "付与", edit_user_path(user,role: "admin") %></td>
+          <% else %>
+            <td></td>
+          <% end %>
+          <td><%= link_to "削除", user_path(user), data: { confirm: "削除最終確認" }, method: :delete %></td>
+        </tr>
+      <% end %>
+    <% end %>
   </table>
 <% else %>
-  <h1>DMページ</h1>
+  <h1>DM</h1>
 <% end %>
 
 <h2>相互フォローリスト</h2>
-
-
+<% friend_sort(current_user).each do |user| %>
+  <% if user.id != current_user.id %>
+    <li>
+      <div class="item">
+        <%= link_to user.name, user %>
+        <%= link_to 'メッセージ', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: :post %>
+      </div>
+    </li>
+    <li><%= render 'follow_form', user: user %></li>
+  <% end %>
+<% end %> 

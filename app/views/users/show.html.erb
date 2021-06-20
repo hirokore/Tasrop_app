@@ -1,6 +1,17 @@
 <h1>マイページ</h1>
 
+<% if @user.image.url  %>
+  <p>
+    <%= link_to image_tag(@user.image.url), edit_user_registration_path %>
+  </p>
+<% end %>
+
+<%= link_to @user.name, edit_user_registration_path %><br>
+<%= link_to 'フォロー', follow_users_path(current_user) %><%= @user.following.count %>/
+<%= link_to 'フォロワー', followed_users_path(current_user) %><%= @user.followers.count %>
+
+
 <h2>いまの最終目標</h2>
-<div><%= @user.email %></div>
+<div><%= @user.last_target %></div>
 
 <h3>タスク達成度一覧</h3>

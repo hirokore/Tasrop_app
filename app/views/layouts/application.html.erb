@@ -11,7 +11,7 @@
     <header>
       <% if user_signed_in? %>
         <%#= link_to "マイタスク", custom_path(current_user) %>
-        <%#= link_to "マイページ", current_user %>
+        <%= link_to "マイページ", current_user %>
         <%= link_to "ご利用ガイド", tutorial_tops_path %>
         <%= link_to "お問い合わせ", contact_tops_path %>
         <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
@@ -22,6 +22,11 @@
         <%= link_to "お問い合わせ", contact_tops_path %>
       <% end %>
     </header>
+    <% if user_signed_in? %>
+      <div class="col-2">
+        <%= render'layouts/sidebar' %>
+      </div>
+    <% end %>
     <% if notice %>
       <p class="alert alert-notice"><%= notice %></p>
     <% end %>
