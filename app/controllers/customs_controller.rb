@@ -48,6 +48,12 @@ class CustomsController < ApplicationController
     end
   end
 
+  def task_status
+    @status = TaskStatus.find(params[:id])
+    @status.task_status = !@status.task_status
+    @status.save
+  end
+
   private
 
   def custom_params
@@ -59,7 +65,7 @@ class CustomsController < ApplicationController
   end
 
   def task_status_params
-    params.require(:task_status).permit(:title, :displayed, :use_comment, :use_picture, :mentor, task_ids: [])
+    params.require(:task_status).permit(:task_status, :comment, :use_comment, :use_picture, :picture)
   end
 
 end

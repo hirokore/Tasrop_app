@@ -19,7 +19,11 @@ Rails.application.routes.draw do
   end
   resources :tasks
   resources :tags
-  resources :customs
+  resources :customs do
+    collection do
+      post '/:id/task_status' => 'customs#task_status'
+    end
+  end
   resources :relationships, only: [:create, :destroy]
   resources :tops, only: [:index, :create] do
     collection do
