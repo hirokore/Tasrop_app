@@ -26,7 +26,7 @@ class Custom < ApplicationRecord
     # mentor = custom.mentor_id #これも追加すること「mentor_id: mentor」
     TaskStatus.update!(task_status: task_status, task_id: task_id, use_picture: use_picture, use_comment: use_comment, picture: picture, comment: comment)
   end
-  
+
   # 作り忘れた過去分を設定する機能（未実装）
   def self.task_status_create_old(custom,task_id)
     task = Task.find(task_id)
@@ -44,4 +44,14 @@ class Custom < ApplicationRecord
       task.update!(custom_id: 1)
     end
   end
+
+  def self.daily_create(user_id)
+    customs = Custom.where(user_id: user_id)
+    customs.each do |custom|
+      custom.task_ids.each do |task_id|
+        task_status_create(custom,task_id)
+      end
+    end
+  end
+
 end
