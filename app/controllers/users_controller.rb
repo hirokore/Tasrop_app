@@ -25,9 +25,13 @@ class UsersController < ApplicationController
     redirect_to users_path, notice: "削除完了"
   end
 
-  def follow
+  def show
+    @tags = Tag.where(user_id: (params[:id]))
   end
 
+  def follow
+  end
+  
   def followed
   end
 

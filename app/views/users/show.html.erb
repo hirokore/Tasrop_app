@@ -15,3 +15,7 @@
 <div><%= @user.last_target %></div>
 
 <h3>タスク達成度一覧</h3>
+<% @tags.each do |tag| %>
+  <div class=""><%= tag.name %></div>
+  <div class=""><%= tag.total_time %></div>
+<% end %> 
