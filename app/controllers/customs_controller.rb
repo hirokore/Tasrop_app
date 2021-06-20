@@ -9,6 +9,7 @@ class CustomsController < ApplicationController
 
   def index
     @customs = Custom.all
+    @tags = Tag.all
   end
 
   def show
