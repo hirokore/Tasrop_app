@@ -9,7 +9,6 @@ class Custom < ApplicationRecord
   def self.task_status_create(custom,task_id)
     task = Task.find(task_id)
     user_id = custom.user_id
-    task_id = task_id
     use_picture = custom.use_picture
     use_comment = custom.use_comment
     # mentor_id = custom.mentor_id #これも追加すること「mentor_id: mentor_id」
