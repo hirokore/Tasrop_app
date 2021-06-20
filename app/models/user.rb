@@ -11,8 +11,11 @@ class User < ApplicationRecord
   # マイタスクカスタマイズ機能
   has_many :customs, dependent: :destroy
 
-  # タスクステータス
+  # タスクステータスとの連携
   has_many :task_statuses, dependent: :destroy
+
+  # タグとの連携
+  has_many :tags, dependent: :destroy
 
   # デバイス関連
   devise  :database_authenticatable, :registerable,:recoverable, :rememberable,
