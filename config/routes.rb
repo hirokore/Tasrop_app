@@ -13,6 +13,8 @@ Rails.application.routes.draw do
     collection do
       get 'follow/:id', to: 'users#follow', as: 'follow'
       get 'followed/:id', to: 'users#followed', as: 'followed'
+      get 'find', to: 'users#find', as: 'find'
+      get 'result', to: 'users#result', as: 'result'
     end
   end
   resources :relationships, only: [:create, :destroy]
