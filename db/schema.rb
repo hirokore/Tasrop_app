@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_20_040408) do
+ActiveRecord::Schema.define(version: 2021_06_20_040557) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -93,6 +93,22 @@ ActiveRecord::Schema.define(version: 2021_06_20_040408) do
     t.index ["user_id"], name: "index_tags_on_user_id"
   end
 
+  create_table "task_statuses", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "task_id"
+    t.boolean "task_status", default: false, null: false
+    t.datetime "implementation_at", default: -> { "now()" }, null: false
+    t.integer "permit", default: 0, null: false
+    t.boolean "use_picture", default: false, null: false
+    t.string "picture"
+    t.boolean "use_comment", default: false, null: false
+    t.string "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["task_id"], name: "index_task_statuses_on_task_id"
+    t.index ["user_id"], name: "index_task_statuses_on_user_id"
+  end
+
   create_table "tasks", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "custom_id"
@@ -140,6 +156,8 @@ ActiveRecord::Schema.define(version: 2021_06_20_040408) do
   add_foreign_key "taggings", "tags"
   add_foreign_key "taggings", "tasks"
   add_foreign_key "tags", "users"
+  add_foreign_key "task_statuses", "tasks"
+  add_foreign_key "task_statuses", "users"
   add_foreign_key "tasks", "customs"
   add_foreign_key "tasks", "users"
 end
