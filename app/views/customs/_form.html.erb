@@ -1,28 +1,26 @@
-<div class="">
-  <%= form_with(model: @custom, local: true) do |f| %>
-    <div class="" class="">
-      <label><%= f.label "マイタスク名" %></label>
-      <%= f.text_field :title, size: "30", id: "custom_title",  placeholder: "タスクのグループ名を決めよう！" %>
+<%= form_with(model: @task, local: true) do |f| %>
+  <% if @task.errors.any? %>
+    <div class="alert alert-dismissible alert-danger">
+      <h2><%= @task.errors.count %>件のエラー発生中</h2>
+      <ul>
+      <% @task.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
     </div>
-    <div class="">
-      <label><%= f.label "タスク①" %></label>
-      <%= f.text_field :task, size: "30", id: "custom_title",  placeholder: "タスクを選択してね！" %>
-    </div>  
-    <div class="">
-      <%= f.label "完了時の写真送付機能" %>
-      <%= f.check_box :use_picture, :as => :boolean%>
-    </div>  
-    <div class="">
-      <%= f.label "完了時のコメント設定機能" %>
-      <%= f.check_box :use_comment, :as => :boolean%>
-    </div>  
-    <div class="">
-      <%#= f.label "メンター設定機能" %>
-      <%#= f.check_box :mentor, :as => :boolean%>
-      <%#= f.collection_select :保存先のカラム名, テーブル（モデル）名.all, :実際にDBに保存させるカラム名, :選択肢に用いるカラム名, include_blank: "選択して下さい" %>
-    </div>
-    <div class="">
-      <%= f.submit "マイタスク設定" %>
-    </div>  
   <% end %>
-</table> 
+    <%= form_with(model: @task, local: true) do |f| %>
+    <div class="" class="">
+      <label><%= f.label "タスク名" %></label><br>
+      <%= f.text_field :name, size: "30", id: "custom_title",  placeholder: "タスク名を決めよう！" %>
+    </div>
+    <div class="" class="">
+      <label><%= f.label "タスク内容" %></label><br>
+      <%= f.text_field :detail, size: "30", id: "custom_title",  placeholder: "何をすれば達成するかを書こう！" %>
+    </div>
+    <div class="" class="">
+      <label><%= f.label "タスク工数" %></label><br>
+      <%= f.text_field :task_time, size: "30", id: "custom_title",  placeholder: "１日どれくらい？" %>時間
+    </div>
+    <div class="">
+      <label><%= f.label "タグ①" %></label><br>
