@@ -17,6 +17,7 @@ Rails.application.routes.draw do
       get 'result', to: 'users#result', as: 'result'
     end
   end
+  resources :customs
   resources :relationships, only: [:create, :destroy]
   resources :tops, only: [:index, :create] do
     collection do
