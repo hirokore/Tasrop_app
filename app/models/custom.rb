@@ -6,6 +6,9 @@ class Custom < ApplicationRecord
   # メンターとの連携
   # belongs_to :mentor
 
+  # validate
+  validates :title, length: { maximum: 16 },presence: { message: 'エラー：マイタスク名を入力してください' }
+
   def self.task_status_create(custom,task_id)
     task = Task.find(task_id)
     user_id = custom.user_id

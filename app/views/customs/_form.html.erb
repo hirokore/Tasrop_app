@@ -1,3 +1,16 @@
+<%= form_with(model: @custom, local: true) do |f| %>
+  <% if @custom.errors.any? %>
+    <div class="alert alert-dismissible alert-danger">
+      <h2><%= @custom.errors.count %>件のエラー発生中</h2>
+      <ul>
+      <% @custom.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<% end %>
+
 <div class="">
   <%= form_with(model: @custom, local: true) do |f| %>
     <div class="" class="">

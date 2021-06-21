@@ -16,6 +16,7 @@ class CustomsController < ApplicationController
       end
       redirect_to customs_path, notice: "登録完了"
     else
+      @tasks = Task.where(user_id: current_user.id)
       render :new
     end
   end
@@ -52,6 +53,7 @@ class CustomsController < ApplicationController
       end
       redirect_to customs_path, notice: "編集完了"
     else
+      @tasks = Task.where(user_id: current_user.id)
       render :new
     end
   end
