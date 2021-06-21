@@ -42,12 +42,19 @@ class CustomsController < ApplicationController
   end
 
   def update
+    old_task_ids = @custom.task_ids
     if @custom.update(custom_params)
+      @custom.task_ids.each do |task_id|
+        unless old_task_ids.include?(task_id)
+          Custom.task_status_create(@custom,task_id)
+        end
+      end
       redirect_to customs_path, notice: "編集完了"
     else
       render :new
     end
   end
+
 
   def task_status
     @status = TaskStatus.find(params[:id])

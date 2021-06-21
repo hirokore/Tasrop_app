@@ -7,11 +7,13 @@ module ApplicationHelper
       link_to name, path, class: 'channel_name'
     end
   end
-
+  
   def daily_task_max_count
     max_count = 0
     current_user.customs.each do |custom|
-      max_count += custom.task_ids.count
+      if custom.id != 1
+        max_count += custom.task_ids.count
+      end
     end
     max_count
   end
