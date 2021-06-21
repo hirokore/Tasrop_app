@@ -1,3 +1,11 @@
+<h1>マイタスク作成ページ</h1>
+<hr>
+
+<%= link_to "マイタスク作成", new_custom_path, class: "btn btn-outline-primary"%>
+<%= link_to "タスク作成", new_task_path, class: "btn btn-outline-primary"%>
+<%= link_to "タグ作成", new_tag_path, class: "btn btn-outline-primary"%>
+<br>
+<hr>
 <%= form_with(model: @custom, local: true) do |f| %>
   <% if @custom.errors.any? %>
     <div class="alert alert-dismissible alert-danger">
@@ -45,7 +53,7 @@
   <% end %>
 </table>
 <br>
-<div class="field" style="padding:0 30px 0 30px;">
+<div class="field">
   <%= link_to "戻る", customs_path%>
 </div>
 <br>
