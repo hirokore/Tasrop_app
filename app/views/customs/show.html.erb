@@ -1,21 +1,21 @@
 <h1>今日の進捗</h1>
 
 <div>
-  <%= "-------達成度-------" %>
+  <%= "-------達成度-------" if current_user.customs.present?%>
 </div>
 
 <div id=“post”>
   <%= render :partial => "article" %>
 </div>
 <div>
-  <%= link_to "更新", custom_path(current_user) %>
+  <%= link_to "更新", custom_path(current_user) if current_user.customs.present? %>
 </div>
 <h1>マイタスク</h1>
 
 <% @customs.each do |custom| %>
-  <% unless custom.id == 1 %>
+  <% if custom.id != 1 && custom.user_id == current_user.id%>
     <div>
-      <%= "---------------------" %>
+      <%= "---------------------"  %>
     </div>
     <div>
       <%= "✅" %>

@@ -1,4 +1,16 @@
 <h1>タグ設定ページ</h1>
+<%= form_with(model: @tag, local: true) do |f| %>
+  <% if @tag.errors.any? %>
+    <div class="alert alert-dismissible alert-danger">
+      <h2><%= @tag.errors.count %>件のエラー発生中</h2>
+      <ul>
+      <% @tag.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<% end %>
 <div class="">
   <%= form_with(model: @tag, local: true) do |f| %>
     <div class="">
