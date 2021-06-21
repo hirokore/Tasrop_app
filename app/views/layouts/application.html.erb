@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>TasropApp</title>
+    <title>DevelopTasropApp</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
+  <body>
     <header>
       <% if user_signed_in? %>
         <%= link_to "マイタスク", custom_path(current_user) %>
@@ -22,23 +23,40 @@
         <%= link_to "お問い合わせ", contact_tops_path %>
       <% end %>
     </header>
-    <% if user_signed_in? %>
-      <div class="col-2">
-        <%= render'layouts/sidebar' %>
+    <div class="container">
+      <div class="row">
+        <% if user_signed_in? %>
+          <div class="content_post col-xs-1 hidden-xs col-sm-3 hidden-sm col-md-3 col-lg-2">
+            <article>
+                <div>
+                  <%= render'layouts/sidebar' %>
+                </div>
+            </article>
+          </div>
+        <% end %>
+        <% if user_signed_in? %>
+          <div class="content_post col-xs-11 col-sm-9 col-md-9 col-lg-10">
+        <% else %>
+          <div>
+        <% end %>
+            <% if notice %>
+              <p class="alert alert-notice"><%= notice %></p>
+            <% end %>
+            <% if alert %>
+              <p class="alert alert-error"><%= alert %></p>
+            <% end %>
+            <%= yield %>
+          </div>
       </div>
-    <% end %>
-    <% if notice %>
-      <p class="alert alert-notice"><%= notice %></p>
-    <% end %>
-    <% if alert %>
-      <p class="alert alert-error"><%= alert %></p>
-    <% end %>
-  <body>
-    <%= yield %>
-  </body>
-  <footer>
-    <div>
-      ©︎ 2021 Tasrop , Inc.
     </div>
-  </footer>
+    <footer class="small">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 text-center copyright">
+            ©︎ 2021 Tasrop , Inc.
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
 </html>

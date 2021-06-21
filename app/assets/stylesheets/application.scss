@@ -1,5 +1,13 @@
+@import "bootstrap"; 
 
-// サイドバー
+h1 {
+  margin: 10px 0 0 0;
+}
+
+.container {
+  margin: 0;
+}
+
 .channel-menu {
   position: fixed;
   top: 0;
@@ -42,7 +50,7 @@
   margin-right: 10px;
   min-height: 100vh;
   height: 100%;
-  width: 160px;
+  width: 130px;
   float: left;
   color: #ab9ba9;
   background-color: #4d394b;
@@ -102,13 +110,11 @@
 
 .channel.active {
   background: #4c9689;
-} 
+}
 
-// フッター
 footer {
-  position: absolute;
   bottom: 0;
-  width: 100%;
+  left: 400px;
+  width: auto;
   height: 30px;
-  text-align: center;
 }
