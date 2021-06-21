@@ -1,4 +1,6 @@
 class ConversationsController < ApplicationController
+  before_action :move_to_signed_in
+
   def index
     @conversations = Conversation.all
   end
