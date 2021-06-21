@@ -31,9 +31,11 @@ class UsersController < ApplicationController
   end
 
   def follow
+    @user = Kaminari.paginate_array(@user.following).page(params[:page]).per(10)
   end
   
   def followed
+    @user = Kaminari.paginate_array(@user.followers).page(params[:page]).per(10)
   end
 
   private
