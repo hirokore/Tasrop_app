@@ -12,6 +12,7 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all.page(params[:page]).per(5)
+    @friends = Kaminari.paginate_array(friend_sort).page(params[:page]).per(5)
   end
 
   def edit

@@ -1,23 +1,24 @@
 <% if current_user.admin? %>
   <h1>管理者ページ</h1>
-  <table>
+  <hr>
+  <table class="table table-hover">
     <th>表示名</th>
-    <th>メルアド</th>
+    <th>メールアドレス</th>
     <th>管理者権限</th>
     <th></th>
     <% @users.each do | user |%>
       <% unless user == current_user%>
         <tr>
-          <td><%= user.name%></td>
-          <td><%= user.email%></td>
+          <td width=35%><%= user.name%></td>
+          <td width=35%><%= user.email%></td>
           <% if user.admin? %>
-            <td><%= link_to "解除", edit_user_path(user,role: "user") %></td>
+            <td width=15%, align=left><%= link_to "解除", edit_user_path(user,role: "user"), class: "btn btn-outline-danger" %></td>
           <% elsif user.user? %>
-            <td><%= link_to "付与", edit_user_path(user,role: "admin") %></td>
+            <td width=15%, align=left><%= link_to "付与", edit_user_path(user,role: "admin"), class: "btn btn-outline-success"  %></td>
           <% else %>
-            <td></td>
+            <td width=15%, align=left></td>
           <% end %>
-          <td><%= link_to "削除", user_path(user), data: { confirm: "削除最終確認" }, method: :delete %></td>
+          <td width=15%, align=right><%= link_to "削除", user_path(user), data: { confirm: "削除最終確認" }, method: :delete, class: "btn btn-outline-danger" %></td>
         </tr>
         <% end %>
     <% end %>
@@ -28,12 +29,15 @@
 <% end %>
 
 <h2>相互フォローリスト</h2>
-<% friend_sort(current_user).each do |user| %>
+<hr>
+<% @friends.each do |user| %>
   <% if user.id != current_user.id %>
       <div class="item">
-        <%= link_to user.name, user %>
-        <%= link_to 'メッセージ', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: :post %>
+        <table class="table table-hover">
+          <td width=80%><%=  user.name %></td>
+          <td width=20%><%= link_to 'メッセージ', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: :post %></td>
+        </table>
       </div>
   <% end %>
 <% end %>
-
+<%= paginate @friends %>

@@ -1,9 +1,6 @@
-
-<br>
+<h1>フォロワー</h1>
+<hr>
 <table>
-  <tr>
-    <th style=" text-align: left;">フォロワー</th>
-  </tr>
   <% @user.followers.each do |followed| %>
     <tr>
       <td><%= link_to followed.name, followed %></td>
