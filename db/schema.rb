@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_19_193600) do
+ActiveRecord::Schema.define(version: 2021_06_20_040557) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,25 @@ ActiveRecord::Schema.define(version: 2021_06_19_193600) do
     t.index ["sender_id"], name: "index_conversations_on_sender_id"
   end
 
+  create_table "customs", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "title", null: false
+    t.boolean "displayed", default: true, null: false
+    t.boolean "use_comment", default: false, null: false
+    t.boolean "use_picture", default: false, null: false
+    t.string "mentor"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_customs_on_user_id"
+  end
+
+  create_table "mentors", force: :cascade do |t|
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_mentors_on_user_id"
+  end
+
   create_table "messages", force: :cascade do |t|
     t.text "body"
     t.bigint "conversation_id"
@@ -54,6 +73,53 @@ ActiveRecord::Schema.define(version: 2021_06_19_193600) do
     t.index ["followed_id"], name: "index_relationships_on_followed_id"
     t.index ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true
     t.index ["follower_id"], name: "index_relationships_on_follower_id"
+  end
+
+  create_table "taggings", force: :cascade do |t|
+    t.bigint "tag_id"
+    t.bigint "task_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tag_id"], name: "index_taggings_on_tag_id"
+    t.index ["task_id"], name: "index_taggings_on_task_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "name", null: false
+    t.float "total_time", default: 0.0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_tags_on_user_id"
+  end
+
+  create_table "task_statuses", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "task_id"
+    t.boolean "task_status", default: false, null: false
+    t.datetime "implementation_at", default: -> { "now()" }, null: false
+    t.integer "permit", default: 0, null: false
+    t.boolean "use_picture", default: false, null: false
+    t.string "picture"
+    t.boolean "use_comment", default: false, null: false
+    t.string "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["task_id"], name: "index_task_statuses_on_task_id"
+    t.index ["user_id"], name: "index_task_statuses_on_user_id"
+  end
+
+  create_table "tasks", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "custom_id"
+    t.string "name", null: false
+    t.text "detail"
+    t.float "task_time"
+    t.boolean "displayed", default: true, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["custom_id"], name: "index_tasks_on_custom_id"
+    t.index ["user_id"], name: "index_tasks_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -83,6 +149,15 @@ ActiveRecord::Schema.define(version: 2021_06_19_193600) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
+  add_foreign_key "customs", "users"
+  add_foreign_key "mentors", "users"
   add_foreign_key "messages", "conversations"
   add_foreign_key "messages", "users"
+  add_foreign_key "taggings", "tags"
+  add_foreign_key "taggings", "tasks"
+  add_foreign_key "tags", "users"
+  add_foreign_key "task_statuses", "tasks"
+  add_foreign_key "task_statuses", "users"
+  add_foreign_key "tasks", "customs"
+  add_foreign_key "tasks", "users"
 end

@@ -1,17 +1,36 @@
-<h1>マイページ</h1>
+<% if @user == current_user %>
+  <h1>マイページ</h1>
+  <% else %>
+  <h1><%= @user.name %>さんのページ</h1>
+<% end %>
+
 
 <% if @user.image.url  %>
   <p>
-    <%= link_to image_tag(@user.image.url), edit_user_registration_path %>
+    <% if @user == current_user %>
+      <%= link_to image_tag(@user.image.url), edit_user_registration_path %>
+    <% else %>
+      <%= image_tag(@user.image.url) %>  
+    <% end %>
   </p>
 <% end %>
 
-<%= link_to @user.name, edit_user_registration_path %><br>
-<%= link_to 'フォロー', follow_users_path(current_user) %><%= @user.following.count %>/
-<%= link_to 'フォロワー', followed_users_path(current_user) %><%= @user.followers.count %>
+<% if @user == current_user %>
+    <%= link_to @user.name, edit_user_registration_path %><br>
+  <% else %>
+    <%= @user.name %><br>
+<% end %>
 
+<%= link_to 'フォロー', follow_users_path(@user) %><%= @user.following.count %>/
+<%= link_to 'フォロワー', followed_users_path(@user) %><%= @user.followers.count %>
 
 <h2>いまの最終目標</h2>
 <div><%= @user.last_target %></div>
 
 <h3>タスク達成度一覧</h3>
+<% @tags.each do |tag| %>
+  <div class=""><%= tag.name %></div>
+  <div class="progress-percentage text-xs-center"><%= tag.total_time %> 時間</div>
+  0 <progress class="progress progress-striped" max="10000" value=<%= tag.total_time %>></progress> 10000
+
+<% end %>

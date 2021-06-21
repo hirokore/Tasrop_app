@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.all
+    @users = User.all.page(params[:page]).per(5)
   end
 
   def edit
@@ -25,9 +25,13 @@ class UsersController < ApplicationController
     redirect_to users_path, notice: "削除完了"
   end
 
-  def follow
+  def show
+    @tags = Tag.where(user_id: (params[:id]))
   end
 
+  def follow
+  end
+  
   def followed
   end
 

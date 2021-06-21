@@ -1,0 +1,38 @@
+<h1>今日の進捗</h1>
+
+<div>
+  <%= "-------達成度-------" if current_user.customs.present?%>
+</div>
+
+<div id=“post”>
+  <%= render :partial => "article" %>
+</div>
+<div>
+  <%= link_to "更新", custom_path(current_user) if current_user.customs.present? %>
+</div>
+<h1>マイタスク</h1>
+
+<% @customs.each do |custom| %>
+  <% if custom.id != 1 && custom.user_id == current_user.id%>
+    <div>
+      <%= "---------------------"  %>
+    </div>
+    <div>
+      <%= "✅" %>
+      <%= custom.title %>
+    </div>
+    <div>
+      <% custom.task_ids.each do |task_id| %>  
+        <% task = Task.find(task_id) %>
+        <% status = TaskStatus.where(created_at: Time.zone.now.all_day).find_by(task_id: task_id) %>
+        <div>
+          <%= check_box_tag 'task_status[task_status]', true, status.task_status, { data: { url: custom_url(status.id) + '/task_status/', method: :post, remote: true}} %>
+          <%= task.name %>
+        </div>
+      <% end %>
+    </div>
+    <br>
+  <% end %>
+<% end %>
+
+<%# if で当日分だけ持ってくる %>

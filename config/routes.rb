@@ -17,6 +17,13 @@ Rails.application.routes.draw do
       get 'result', to: 'users#result', as: 'result'
     end
   end
+  resources :tasks
+  resources :tags
+  resources :customs do
+    collection do
+      post '/:id/task_status' => 'customs#task_status'
+    end
+  end
   resources :relationships, only: [:create, :destroy]
   resources :tops, only: [:index, :create] do
     collection do

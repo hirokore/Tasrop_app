@@ -5,3 +5,5 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+# Custom.create(user_id: 1, title: "タスクデフォルト設定用", displayed: false, id: 1) 
