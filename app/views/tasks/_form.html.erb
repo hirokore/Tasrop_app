@@ -9,31 +9,31 @@
       </ul>
     </div>
   <% end %>
+<% end %>
 
-    <%= form_with(model: @task, local: true) do |f| %>
-    <div class="" class="">
-      <label><%= f.label "タスク名" %></label><br>
-      <%= f.text_field :name, size: "30", id: "custom_title",  placeholder: "タスク名を決めよう！" %>
-    </div>
-    <div class="" class="">
-      <label><%= f.label "タスク内容" %></label><br>
-      <%= f.text_field :detail, size: "30", id: "custom_title",  placeholder: "何をすれば達成するかを書こう！" %>
-    </div>
-    <div class="" class="">
-      <label><%= f.label "タスク工数" %></label><br>
-      <%= f.text_field :task_time, size: "30", id: "custom_title",  placeholder: "１日どれくらい？" %>時間
-    </div>
-    <div class="">
-      <label><%= f.label "タグ" %></label><br>
-      <% @tags.each do |tag| %>
-        <%= f.check_box :tag_ids, { multiple: true, checked: @task.tag_ids.include?(tag.id), disabled: tag[:disabled], include_hidden: false }, tag[:id] %>
-      <%= f.label :tag_ids, tag.name, value: tag[:id] %>
+<%= form_with(model: @task, local: true) do |f| %>
+  <div class="" class="">
+    <label><%= f.label "タスク名" %></label><br>
+    <%= f.text_field :name, size: "30", id: "custom_title",  placeholder: "タスク名を決めよう！" %>
+  </div>
+  <div class="" class="">
+    <label><%= f.label "タスク内容" %></label><br>
+    <%= f.text_field :detail, size: "30", id: "custom_title",  placeholder: "何をすれば達成するかを書こう！" %>
+  </div>
+  <div class="" class="">
+    <label><%= f.label "タスク工数" %></label><br>
+    <%= f.text_field :task_time, size: "30", id: "custom_title",  placeholder: "１日どれくらい？" %>時間
+  </div>
+  <div class="">
+    <label><%= f.label "タグ" %></label><br>
+    <% @tags.each do |tag| %>
+      <%= f.check_box :tag_ids, { multiple: true, checked: @task.tag_ids.include?(tag.id), disabled: tag[:disabled], include_hidden: false }, tag[:id] %>
+    <%= f.label :tag_ids, tag.name, value: tag[:id] %>
     <% end %>  
-    </div><br>
-    <div class="">
-      <%= f.submit "タスク設定" %>
-    </div>  
-  <% end %>
+  </div><br>
+  <div class="">
+    <%= f.submit "タスク設定" %>
+  </div>  
 <% end %>
 <br>
 <div class="field" style="padding:0 30px 0 30px;">

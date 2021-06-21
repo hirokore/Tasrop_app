@@ -15,6 +15,7 @@ class TasksController < ApplicationController
     if @task.save
       redirect_to customs_path, notice: "登録完了"
     else
+      @tags = Tag.where(user_id: current_user.id)
       render :new
     end
   end
@@ -23,6 +24,7 @@ class TasksController < ApplicationController
     if @task.update(task_params)
       redirect_to customs_path, notice: "編集完了"
     else
+      @tags = Tag.where(user_id: current_user.id)
       render :new
     end
   end

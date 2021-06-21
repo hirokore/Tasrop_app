@@ -8,4 +8,11 @@ class Task < ApplicationRecord
   has_many :taggings, dependent: :destroy
   has_many :tags, through: :taggings
   accepts_nested_attributes_for :tags, reject_if: :all_blank, allow_destroy: true
+
+  # validate
+  validates_associated :tags
+  validates :name, length: { maximum: 16 }
+  validates :detail, length: { maximum: 512 }
+  validates :task_time, numericality: {greater_than: 0,less_than: 24}
+  
 end

@@ -4,6 +4,6 @@ class Tag < ApplicationRecord
   has_many :taggings, dependent: :destroy
 
   # validate
-  validates :name, length: { maximum: 20 }
+  validates :name, length: { maximum: 16 }
 
 end
