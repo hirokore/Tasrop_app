@@ -21,6 +21,7 @@ class TasksController < ApplicationController
   end
 
   def update
+    @task.tag_ids = [] if @task.tag_ids.present?
     if @task.update(task_params)
       redirect_to customs_path, notice: "編集完了"
     else

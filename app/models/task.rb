@@ -11,8 +11,9 @@ class Task < ApplicationRecord
 
   # validate
   validates_associated :tags
-  validates :name, length: { maximum: 16 }
-  validates :detail, length: { maximum: 512 }
-  validates :task_time, numericality: {greater_than: 0,less_than: 24}
-  
+  validates :name, length: { maximum: 16 },presence: { message: 'エラー：タスク名を入力してください' }
+  validates :detail, length: { maximum: 512 },presence: { message: 'エラー：タスク内容を入力してください' }
+  validates :task_time, numericality: {greater_than: 0,less_than: 24, message: 'エラー：タスク工数は数値で入力してください'}, presence: { message: 'エラー：タスク工数は0-24時間内で入力してください' }
+  validates :tag_ids, presence:  { message: 'エラー：タグを１つ以上選択してください' }
+
 end

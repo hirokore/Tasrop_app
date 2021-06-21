@@ -4,6 +4,6 @@ class Tag < ApplicationRecord
   has_many :taggings, dependent: :destroy
 
   # validate
-  validates :name, length: { maximum: 16 }
+  validates :name, length: { maximum: 16 },presence: { message: 'エラー：タグ名を入力してください' }
 
 end
