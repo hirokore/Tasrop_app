@@ -28,7 +28,7 @@ class CustomsController < ApplicationController
   end
 
   def show
-    Custom.daily_create(params[:id]) unless TaskStatus.find_by(created_at: Time.zone.now.all_day).present?
+    Custom.daily_create(params[:id]) unless TaskStatus.where(created_at: Time.zone.now.all_day).where(user_id: current_user.id).present?
     @custom = Custom.find_by(user_id: params[:id])
     @customs = Custom.all
   end
@@ -64,11 +64,16 @@ class CustomsController < ApplicationController
     @status.task_status = !@status.task_status
     @tag = Task.find(@status.task_id).tags
     if @status.task_status
-      @tag[0].total_time += Task.find(@status.task_id).task_time
+      @tag.each do |tag|
+        tag.total_time += Task.find(@status.task_id).task_time
+        tag.save
+      end
     else
-      @tag[0].total_time -= Task.find(@status.task_id).task_time
+      @tag.each do |tag|
+        tag.total_time -= Task.find(@status.task_id).task_time
+        tag.save
+      end
     end
-    @tag[0].save
     @status.save
   end
 
