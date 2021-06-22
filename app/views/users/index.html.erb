@@ -37,10 +37,12 @@
   <tbody>
     <% @friends.each do |user| %>
       <% if user.id != current_user.id %>
+        <tr>
           <div class="item">
             <td width=80%><%=  user.name %></td>
             <td width=20%><%= link_to 'メッセージ', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: :post %></td>
           </div>
+        </tr>
       <% end %>
     <% end %>
   </tbody>
