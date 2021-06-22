@@ -1,22 +1,27 @@
 <h1>カスタマイズページ</h1>
+<hr>
+
 <%= link_to "マイタスク作成", new_custom_path, class: "btn btn-outline-primary"%>
 <%= link_to "タスク作成", new_task_path, class: "btn btn-outline-primary"%>
 <%= link_to "タグ作成", new_tag_path, class: "btn btn-outline-primary"%>
-<br><br>
+<br>
+<hr>
 
 <table class="table table-hover">
   <thead>
     <tr>
       <th style="text-align:left;"><a class="btn btn-primary" >マイタスク一覧</a></th>
+      <th></th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
     <% @customs.each do |custom| %>
       <% if custom.displayed %>
         <tr>
-          <td class="custom_list_name"><%= custom.title.truncate(15) %></td>
-          <td><%= link_to "編集", edit_custom_path(custom), class: "btn btn-outline-success" %></td>
-          <td><%= link_to "削除", custom, method: :delete, data: { confirm: "本当に消してもいいですか？" }, class: "btn btn-outline-danger" %></td>
+          <td width=60%,class="custom_list_name"><%= custom.title.truncate(15) %></td>
+          <td width=20%, align=right><%= link_to "編集", edit_custom_path(custom), class: "btn btn-outline-success" %></td>
+          <td width=20%, align=right><%= link_to "削除", custom, method: :delete, data: { confirm: "本当に消してもいいですか？" }, class: "btn btn-outline-danger" %></td>
         </tr>
       <% end %>
     <% end %>
@@ -28,15 +33,17 @@
   <thead>
     <tr>
       <th style="text-align:left;"><a class="btn btn-primary" >タスク一覧</a></th>
+      <th></th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
     <% @tasks.each do |task| %>
       <% if task.displayed == true %>
         <tr>
-          <td class="custom_list_name"><%= task.name.truncate(15) %></td>
-          <td><%= link_to "編集", edit_task_path(task), class: "btn btn-outline-success" %></td>
-          <td><%= link_to "削除", task, method: :delete, data: { confirm: "本当に消してもいいですか？" }, class: "btn btn-outline-danger" %></td>
+          <td width=60%,class="custom_list_name"><%= task.name.truncate(15) %></td>
+          <td width=20%, align=right><%= link_to "編集", edit_task_path(task), class: "btn btn-outline-success" %></td>
+          <td width=20%, align=right><%= link_to "削除", task, method: :delete, data: { confirm: "本当に消してもいいですか？" }, class: "btn btn-outline-danger" %></td>
         </tr>
       <% end %>  
     <% end %>
@@ -49,14 +56,16 @@
   <thead>
     <tr>
       <th style="text-align:left;"><a class="btn btn-primary" >タグ一覧</a></th>
+      <th></th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
     <% @tags.each do |tag| %>
       <tr>
-        <td class="custom_list_name"><%= tag.name.truncate(15) %></td>
-        <td><%= link_to "編集", edit_tag_path(tag), class: "btn btn-outline-success" %></td>
-        <td><%= link_to "削除", tag, method: :delete, data: { confirm: "本当に消してもいいですか？" }, class: "btn btn-outline-danger" %></td>
+        <td width=60%, class="custom_list_name"><%= tag.name.truncate(15) %></td>
+        <td width=20%, align=right><%= link_to "編集", edit_tag_path(tag), class: "btn btn-outline-success" %></td>
+        <td width=20%, align=right><%= link_to "削除", tag, method: :delete, data: { confirm: "本当に消してもいいですか？" }, class: "btn btn-outline-danger" %></td>
       </tr>
     <% end %>
   </tbody>

@@ -1,11 +1,11 @@
-<br>
-<table>
-  <tr>
-    <th style=" text-align: left;">フォロー</th>
-  </tr>
-  <% @user.following.each do |follow| %>
+<h1>フォロー</h1>
+<hr>
+<table class="table table-hover">
+  <% @user.each do |follow| %>
     <tr>
-      <td><%= link_to follow.name, follow %></td>
+      <td width=70%><%= link_to follow.name, follow %></td>
+      <td width=30%, align=center><%= render 'follow_form', user: follow %></td>
     </tr>
   <% end %>
 </table>
+<%= paginate @user %>

@@ -1,12 +1,11 @@
-
-<br>
-<table>
-  <tr>
-    <th style=" text-align: left;">フォロワー</th>
-  </tr>
-  <% @user.followers.each do |followed| %>
+<h1>フォロワー</h1>
+<hr>
+<table class="table table-hover">
+  <% @user.each do |followed| %>
     <tr>
-      <td><%= link_to followed.name, followed %></td>
+      <td width=70%><%= link_to followed.name, followed %></td>
+      <td width=30%, align=center><%= render 'follow_form', user: followed %></td>
     </tr>
   <% end %>
 </table>
+<%= paginate @user %>

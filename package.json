@@ -2,6 +2,8 @@
   "name": "tasrop_app",
   "private": true,
   "dependencies": {
+    "bootstrap": "^5.0.1",
+    "bootstrap-honoka": "^4.4.0",
     "jquery": "^3.6.0"
   }
 }
