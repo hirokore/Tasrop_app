@@ -64,11 +64,16 @@ class CustomsController < ApplicationController
     @status.task_status = !@status.task_status
     @tag = Task.find(@status.task_id).tags
     if @status.task_status
-      @tag[0].total_time += Task.find(@status.task_id).task_time
+      @tag.each do |tag|
+        tag.total_time += Task.find(@status.task_id).task_time
+        tag.save
+      end
     else
-      @tag[0].total_time -= Task.find(@status.task_id).task_time
+      @tag.each do |tag|
+        tag.total_time -= Task.find(@status.task_id).task_time
+        tag.save
+      end
     end
-    @tag[0].save
     @status.save
   end
 
