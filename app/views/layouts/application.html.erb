@@ -8,20 +8,68 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
   <body>
     <header>
-      <% if user_signed_in? %>
-        <%= link_to "マイタスク", custom_path(current_user) %>
-        <%= link_to "マイページ", current_user %>
-        <%= link_to "ご利用ガイド", tutorial_tops_path %>
-        <%= link_to "お問い合わせ", contact_tops_path %>
-        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-      <% else %>
-        <%= link_to "新規登録", new_user_registration_path %>
-        <%= link_to "ログイン", new_user_session_path %>
-        <%= link_to "ご利用ガイド", tutorial_tops_path %>
-        <%= link_to "お問い合わせ", contact_tops_path %>
-      <% end %>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a class="navbar-brand" href="#">Tasrop</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <% if user_signed_in? %>
+          <div class="collapse navbar-collapse" id="navbarColor01">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item">
+                <%= link_to "マイタスク", custom_path(current_user), {class: "nav-link"} %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "マイページ", current_user, {class: "nav-link"} %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "ご利用ガイド", tutorial_tops_path, {class: "nav-link"} %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "お問い合わせ", contact_tops_path, {class: "nav-link"} %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link", name: "ログアウト" %>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  サブメニュー
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <%= link_to "カスタマイズ", customs_path, {class: "dropdown-item"} %>
+                  <%= link_to "ユーザー検索", find_users_path, {class: "dropdown-item"} %>
+                  <% if current_user.admin? %>
+                    <%= link_to "管理者", users_path, {class: "dropdown-item"} %>
+                  <% else %>
+                    <%= link_to "DM", users_path, {class: "dropdown-item"} %>
+                  <% end %>
+                </div>
+              </li>
+            </ul>
+          </div>
+        <% else %>
+          <div class="collapse navbar-collapse" id="navbarColor01">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item">
+                <%= link_to "新規登録", new_user_registration_path, {class: "nav-link"} %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "ログイン", new_user_session_path, {class: "nav-link"} %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "ご利用ガイド", tutorial_tops_path, {class: "nav-link"} %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "お問い合わせ", contact_tops_path, {class: "nav-link"} %>
+              </li>
+            </ul>
+          </div>
+        <% end %>
+      </nav>
     </header>
     <div class="container">
       <div class="row">
