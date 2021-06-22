@@ -25,19 +25,26 @@
   </table>
   <%= paginate @users %>
 <% else %>
-  <h1>DM</h1>
+  <h1>DMページ</h1>
+  <hr>
 <% end %>
 
-<h2>相互フォローリスト</h2>
-<hr>
-<% @friends.each do |user| %>
-  <% if user.id != current_user.id %>
-      <div class="item">
-        <table class="table table-hover">
-          <td width=80%><%=  user.name %></td>
-          <td width=20%><%= link_to 'メッセージ', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: :post %></td>
-        </table>
-      </div>
-  <% end %>
-<% end %>
+<table class="table table-hover">
+  <thead>
+    <th style="text-align:left;"><a class="btn btn-primary" >相互フォローリスト</a></th>
+    <th></th>
+  </thead>
+  <tbody>
+    <% @friends.each do |user| %>
+      <% if user.id != current_user.id %>
+          <div class="item">
+            <td width=80%><%=  user.name %></td>
+            <td width=20%><%= link_to 'メッセージ', conversations_path(sender_id: current_user.id, recipient_id: user.id), method: :post %></td>
+          </div>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+<%= "相互フォローをしているユーザーがいません" unless @friends.present? %>
+
 <%= paginate @friends %>
