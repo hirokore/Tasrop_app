@@ -46,6 +46,17 @@ class User < ApplicationRecord
       # 通常ログインができるように
     end
   end
+    # テスト用管理者ログイン用メソッド
+    def self.guest_admin
+      find_or_create_by!(email: 'guest_admin@example.com') do |user|
+        user.password = SecureRandom.urlsafe_base64
+        user.name = 'ゲスト管理者'
+        user.name_tag = name_tag
+        user.uid = create_unique_string
+        user.admin!
+        # 通常ログインができるように
+      end
+    end
   # uid作成メソッド
   def self.create_unique_string
     SecureRandom.uuid
