@@ -1,8 +1,8 @@
 require 'rails_helper'
 RSpec.describe User, type: :model do
   describe 'バリデーションチェック（User）' do
-    it "name/email/password(確認も)/name_tagがあれば有効な状態であること" do
-      user = User.new(name: "test01", email: "test01@dic.com", password: "000000", password_confirmation: "000000", name_tag: "0000")
+    it "name/detail/task_time/tag_idsがあれば有効な状態であること" do
+      task = Task.new(name: "test01", detail: "test01", task_time: "0.5", tag_ids: [1])
       expect(user).to be_valid
     end
     it "nameがない場合、無効な状態であること" do
@@ -23,14 +23,6 @@ RSpec.describe User, type: :model do
     end
     it "name_tagがない場合、無効な状態であること" do
       user = User.new( name: "test01", email: "test01@dic.com", password: "000000", password_confirmation: "000000", name_tag: "")
-      expect(user).not_to be_valid
-    end
-    it "nameが33文字以上があれば無効な状態であること" do
-      user = User.new(name: "#{"a"*33}", email: "test01@dic.com", password: "000000", password_confirmation: "000000", name_tag: "0000")
-      expect(user).not_to be_valid
-    end
-    it "emailが255文字以上があれば無効な状態であること" do
-      user = User.new(name: "test01", email: "#{"a"*247}@dic.com", password: "000000", password_confirmation: "000000", name_tag: "0000")
       expect(user).not_to be_valid
     end
   end
