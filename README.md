@@ -133,15 +133,22 @@ https://docs.google.com/spreadsheets/d/1J-nkKOKEZohB0Nv6G6RsLCyCyiUjqvmMTtA-eIQN
 ## 使用Gem
 ※都度、追加予定
 - gem 'devise'  
+- gem 'devise-i18n'  
 - gem 'ransack'  
 - gem 'kaminari'  
-<!-- - gem 'omniauth'  
+- gem 'omniauth'  
 - gem 'omniauth-google-oauth2'  
 - gem 'omniauth-facebook'  
-- gem 'omniauth-twitter'  
 - gem 'dotenv-rails'  
-- gem 'rails_admin'   -->
 - gem 'carrierwave'  
 - gem 'mini_magick'  
 - gem 'bootstrap'  
-<!-- ## 掲載画像の出典元 -->
+- gem 'slack-notifier'
+- gem 'jquery-rails'
+
+## 就業term技術
+友達繋がり機能（フォロー・フォロワー機能）
+AWS or メッセージ機能 or devise (もしくは全部)
+
+## カリキュラムで学んでいない技術
+ユーザー検索機能（ransack）
