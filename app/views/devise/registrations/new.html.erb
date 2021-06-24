@@ -47,10 +47,10 @@
       <hr>
       <h2 style="text-align:center;">ゲストログイン</h2><br>
       <div class="field">
-        <%= link_to 'ログイン', users_guest_sign_in_path, method: :post %>
+        <%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post, name: "guest_login" %>
       </div>
       <div class="field">
-        <%= link_to '管理者ログイン（提出時のみ後で削除）', users_guest_admin_sign_in_path, method: :post %>
+        <%= link_to 'ゲスト管理者ログイン', users_guest_admin_sign_in_path, method: :post, name: "guest_admin_login" %>
       </div>
     </div>
   </div>

@@ -45,7 +45,8 @@ class User < ApplicationRecord
   # ゲストログイン用メソッド
   def self.guest
     find_or_create_by!(email: 'guest@example.com') do |user|
-      user.password = SecureRandom.urlsafe_base64
+      user.password = "000000"
+      user.password_confirmation = "000000"
       user.name = 'ゲストユーザー'
       user.name_tag = name_tag
       user.uid = create_unique_string
@@ -56,7 +57,8 @@ class User < ApplicationRecord
     # テスト用管理者ログイン用メソッド
     def self.guest_admin
       find_or_create_by!(email: 'guest_admin@example.com') do |user|
-        user.password = SecureRandom.urlsafe_base64
+        user.password = "000000"
+        user.password_confirmation = "000000"
         user.name = 'ゲスト管理者'
         user.name_tag = name_tag
         user.uid = create_unique_string
