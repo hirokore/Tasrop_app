@@ -36,9 +36,9 @@ RSpec.describe User, type: :model do
   end
   describe 'name_tag検索のテスト' do
     before(:each) do
-      @user = create(:user) #ここで定義
     end
     it "name_tagの検索が可能なこと" do
+      user = User.new(name: "test01", email: "test01@dic.com", password: "000000", password_confirmation: "000000", name_tag: "1234")
       expect(User.find_by(name_tag: "1234")).to eq @user
     end
   end
