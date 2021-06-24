@@ -1,5 +1,5 @@
 require 'rails_helper'
-RSpec.describe User, type: :model do
+RSpec.describe Task, type: :model do
   user = FactoryBot.create(:user)
   tag = FactoryBot.create(:tag)
   custom = FactoryBot.create(:custom)
