@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe '卒業アプリ制作機能要件', type: :system do
   before do
-    user = FactoryBot.create(:user, name_tag: "1111")
+    user = User.find_by(email: FactoryBot.build(:user).email) || FactoryBot.create(:user, name_tag: "1234")
     tag = FactoryBot.create(:tag)
     custom = FactoryBot.create(:custom)
     task = FactoryBot.create(:task)  

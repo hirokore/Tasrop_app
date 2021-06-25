@@ -31,10 +31,10 @@ class User < ApplicationRecord
   after_initialize :set_default_role, :if => :new_record?
   
   # validate
-  validates :name, length: { maximum: 32 },presence: { message: 'エラー：名前を入力してください' }
+  # validates :name, length: { maximum: 32 },presence: { message: 'エラー：名前を入力してください' }
   validates :email, length: { maximum: 254 },presence: { message: 'エラー：メールアドレスを入力してください' }
-  validates :password, presence: { message: 'エラー：パスワードを入力してください' }
-  validates :password_confirmation, presence: { message: 'エラー：パスワードの再入力をしてください' }
+  # validates :password, presence: { message: 'エラー：パスワードを入力してください' }
+  # validates :password_confirmation, presence: { message: 'エラー：パスワードの再入力をしてください' }
   validates :name_tag, presence: true
   
   # 一般ユーザーの役割をデフォルト追加するメソッド
