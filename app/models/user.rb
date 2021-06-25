@@ -31,10 +31,10 @@ class User < ApplicationRecord
   after_initialize :set_default_role, :if => :new_record?
   
   # validate
-  # validates :name, length: { maximum: 32 },presence: { message: 'エラー：名前を入力してください' }
+  validates :name, length: { maximum: 32 },presence: { message: 'エラー：名前を入力してください' }
   validates :email, length: { maximum: 254 },presence: { message: 'エラー：メールアドレスを入力してください' }
-  # validates :password, presence: { message: 'エラー：パスワードを入力してください' }
-  # validates :password_confirmation, presence: { message: 'エラー：パスワードの再入力をしてください' }
+  validates :password, presence: { message: 'エラー：パスワードを入力してください' }
+  validates :password_confirmation, presence: { message: 'エラー：パスワードの再入力をしてください' }
   validates :name_tag, presence: true
   
   # 一般ユーザーの役割をデフォルト追加するメソッド
@@ -74,13 +74,16 @@ class User < ApplicationRecord
   def self.find_for_oauth(auth)
     user = User.find_by(email: auth.info.email)
     unless user
+      name = "SNSログインユーザー" unless auth.info.name
       user = User.new(email: auth.info.email,
-                      name: auth.info.name,
+                      name: name,
                       name_tag: name_tag,
                       provider: auth.provider,
                       uid:      auth.uid,
-                      password: Devise.friendly_token[0, 20],
+                      password: "000000",
+                      password_confirmation: "000000"
       )
+      # password: Devise.friendly_token[0, 20] 本当はこれを使いたいが、メール機能がないためパス変更ができないので省略
     end
     user.save
     user
