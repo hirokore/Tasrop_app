@@ -17,6 +17,8 @@
  */
 
 @import "bootstrap"; 
+@import "./tops.scss";
+@import "./footer.scss";
 
 h1 {
   margin: 10px 0 0 0;
@@ -128,13 +130,6 @@ h1 {
 
 .channel.active {
   background: #4c9689;
-}
-
-footer {
-  bottom: 0;
-  left: 400px;
-  width: auto;
-  height: 30px;
 }
 
 // ログイン画面
