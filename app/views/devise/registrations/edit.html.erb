@@ -10,17 +10,17 @@
 
   <div class="">
     <%= f.label "いまの最終目標" %><br />
-    <%= f.text_field :last_target, autofocus: true, autocomplete: "last_target" %>
+    <%= f.text_field :last_target, autofocus: true, autocomplete: "last_target", placeholder: "最終目標" %>
   </div>
 
   <div class="">
     <%= f.label "ユーザー表示名" %><br />
-    <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+    <%= f.text_field :name, autofocus: true, autocomplete: "name", placeholder: "お名前" %>
   </div>
 
   <div class="">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "例: yama@dic.com" %>
   </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -29,7 +29,7 @@
 
   <div class="">
     <%= f.label :password %> <i>(<%= t('.leave_blank_if_you_don_t_want_to_change_it') %>)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+    <%= f.password_field :password, autocomplete: "new-password", placeholder: "パスワード入力" %>
     <% if @minimum_password_length %>
       <em><%= t('devise.shared.minimum_password_length', count: @minimum_password_length) %></em>
     <% end %>
@@ -37,7 +37,7 @@
 
   <div class="">
     <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "パスワード再確認" %>
   </div><br />
 
   <div class="">
