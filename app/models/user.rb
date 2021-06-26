@@ -74,7 +74,11 @@ class User < ApplicationRecord
   def self.find_for_oauth(auth)
     user = User.find_by(email: auth.info.email)
     unless user
-      name = "SNSログインユーザー" unless auth.info.name
+      if auth.info.name
+        name = auth.info.name
+      else
+        name = "SNSログインユーザー"
+      end
       user = User.new(email: auth.info.email,
                       name: name,
                       name_tag: name_tag,
