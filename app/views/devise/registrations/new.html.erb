@@ -8,7 +8,7 @@
 
         <div class="field " >
           <%= f.label "お名前" %><br />
-          <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+          <%= f.text_field :name, autofocus: true, autocomplete: "name", placeholder: "お名前" %>
         </div>
 
         <div class="field">
@@ -17,7 +17,7 @@
 
         <div class="field">
           <%= f.label :email %><br />
-          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "例: yama@dic.com" %>
         </div>
 
         <div class="field">
@@ -25,12 +25,12 @@
           <% if @minimum_password_length %>
           <em><%= t('devise.shared.minimum_password_length', count: @minimum_password_length) %></em>
           <% end %><br />
-          <%= f.password_field :password, autocomplete: "new-password" %>
+          <%= f.password_field :password, autocomplete: "new-password", placeholder: "パスワード入力" %>
         </div>
 
         <div class="field">
           <%= f.label :password_confirmation %><br />
-          <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "パスワード再確認" %>
         </div>
         <hr>
         <div class="button-panel">

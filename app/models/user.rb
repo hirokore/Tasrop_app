@@ -74,13 +74,16 @@ class User < ApplicationRecord
   def self.find_for_oauth(auth)
     user = User.find_by(email: auth.info.email)
     unless user
+      name = "SNSログインユーザー" unless auth.info.name
       user = User.new(email: auth.info.email,
-                      name: auth.info.name,
+                      name: name,
                       name_tag: name_tag,
                       provider: auth.provider,
                       uid:      auth.uid,
-                      password: Devise.friendly_token[0, 20],
+                      password: "000000",
+                      password_confirmation: "000000"
       )
+      # password: Devise.friendly_token[0, 20] 本当はこれを使いたいが、メール機能がないためパス変更ができないので省略
     end
     user.save
     user
