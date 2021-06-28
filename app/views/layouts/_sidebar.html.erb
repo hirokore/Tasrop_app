@@ -11,7 +11,7 @@
       <%= sidebar_custom('ユーザー検索', find_users_path) %>
       <%#= sidebar_custom('メンター機能', current_user) %>
       <% if current_user.admin? %>
-        <%= sidebar_custom('管理者', users_path) %>
+        <%= sidebar_custom('管理者/DM', users_path) %>
       <% else %>
         <%= sidebar_custom('DM', users_path) %>
       <% end %>
