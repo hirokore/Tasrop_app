@@ -157,6 +157,46 @@ describe '卒業アプリ制作機能要件', type: :system do
         expect(page).to have_content("管理者ページ")
       end
     end
+    context '（機能要件高ではない）管理者ページでユーザーに権限を付与した場合' do
+      it '権限変更完了の通知が確認でき、解除ができる状態となる' do
+        visit new_user_registration_path
+        click_on "ゲスト管理者ログイン"
+        visit users_path
+        click_on "付与"
+        expect(page).to have_content("権限変更完了")
+        expect(page).to have_content("解除")
+      end
+    end
+    context '（機能要件高ではない）管理者ページでユーザーの権限を解除した場合' do
+      it '権限変更完了の通知が確認で、付与ができる状態となる' do
+        visit new_user_registration_path
+        click_on "ゲスト管理者ログイン"
+        visit users_path
+        click_on "付与"
+        click_on "解除"
+        expect(page).to have_content("権限変更完了")
+        expect(page).to have_content("付与")
+      end
+    end
+    context '（機能要件高ではない）管理者ページでユーザーを削除した場合' do
+      it '削除完了の通知が確認できる' do
+        visit new_user_registration_path
+        click_on "ゲスト管理者ログイン"
+        visit users_path
+        page.accept_confirm do
+          click_on "削除", match: :first
+        end
+        expect(page).to have_content("削除完了")
+      end
+    end
+    context '管理者ログインをした場合' do
+      it '管理者ページに遷移することができる' do
+        visit new_user_registration_path
+        click_on "ゲスト管理者ログイン"
+        visit users_path
+        expect(page).to have_content("管理者ページ")
+      end
+    end
     context '管理者ログインでない場合' do
       it '管理者ページに遷移することができない' do
         visit new_user_registration_path
