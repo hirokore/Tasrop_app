@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[ show follow followed destroy]
+  before_action :set_user, only: %i[ show follow followed destroy edit]
   before_action :move_to_signed_in
   before_action :set_q, only: [:index, :result, :find]
 
@@ -16,7 +16,6 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
     role_change!(@user,params[:role])
     redirect_to users_path, notice: "権限変更完了"
   end

@@ -34,7 +34,13 @@
 <hr>
 <h6 class="btn btn-primary">タスク達成度一覧</h6>
 <% @tags.each do |tag| %>
+  <% progress = tag.total_time / 10000 * 100 %>
   <div class="progress-percentage text-xs-center"><%= tag.name %>.....現在の達成時間は「<%= tag.total_time %> 時間」</div>
-  0　　　　　　　10000<progress class="progress progress-striped" max="10000" value=<%= tag.total_time %>></progress>
+  <br>
+  <div class="progress">
+    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: <%= progress %>%;"></div>
+  </div>
+  <p style="float:left;">0</p><p style="float:right;text-align:right;">10000</p>
+  <br>
   <hr>
 <% end %>
