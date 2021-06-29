@@ -69,13 +69,14 @@
   - HTML5/CSS  
   - JavaScript/jQuery  
 - **インフラ**  
-  - AWS  
+  - heroku
+  <!-- - AWS  
     - VPC  
     - EC2  
     - Route53  
     - RDS  
   - Nginx  
-  - Puma  
+  - Puma   -->
 <!-- - **AWS環境構成図**   -->
 <!-- <img src="./public/images/xxx.png" alt="アプリケーション構成図" width='650px'>   -->
 
@@ -148,7 +149,7 @@ https://docs.google.com/spreadsheets/d/1J-nkKOKEZohB0Nv6G6RsLCyCyiUjqvmMTtA-eIQN
 
 ## 就業term技術
 友達繋がり機能（フォロー・フォロワー機能）
-AWS or メッセージ機能 or devise (もしくは全部)
+メッセージ機能 or devise (もしくは全部)
 
 ## カリキュラムで学んでいない技術
 ユーザー検索機能（ransack）
