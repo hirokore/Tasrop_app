@@ -30,7 +30,13 @@ class TagsController < ApplicationController
     end
   end
   
+  # 要リファクタリング
   def destroy
+    if Tagging.find_by(tag_id: @tag.id)
+      @task = Task.find(Tagging.find_by(tag_id: @tag.id).task_id)
+      @task.displayed = false
+      @task.custom_id = 1
+    end
     @tag.destroy
     redirect_to customs_path, notice: "削除完了"
   end
