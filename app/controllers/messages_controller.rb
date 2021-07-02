@@ -5,6 +5,7 @@ class MessagesController < ApplicationController
     @conversation = Conversation.find(params[:conversation_id])
   end
 
+  # 諸々、scope使用してモデルへ
   def index
     @messages = @conversation.messages
     if @messages.length > 10
