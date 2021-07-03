@@ -16,9 +16,20 @@ class Task < ApplicationRecord
   validates :task_time, numericality: {greater_than: 0,less_than: 24, message: 'エラー：タスク工数は数値で入力してください'}, presence: { message: 'エラー：タスク工数は0-24時間内で入力してください' }
   validates :tag_ids, presence:  { message: 'エラー：タグは１つ以上の選択が必須です' }
 
+  # タスク作成前後、関連メソッド発火
+  # before_create :custom_set
+
   # 全角を半角に強制転換
   def task_time=(string)
     string.tr!('０-９', '0-9') if string.is_a?(String)
     super(string)
   end
+
+  private
+
+  # def custom_set
+  #   @task.custom_id = 1
+  #   @task.user_id = current_user.id
+  # end
+  
 end

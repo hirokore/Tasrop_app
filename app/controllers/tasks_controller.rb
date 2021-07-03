@@ -42,6 +42,7 @@ class TasksController < ApplicationController
   end
 
   # リファクタリング必至
+  # @statusはscope使用してモデルへ
   def destroy
     @task.displayed = false
     @task.custom_id = 1

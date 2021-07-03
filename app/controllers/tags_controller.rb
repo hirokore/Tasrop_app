@@ -31,6 +31,7 @@ class TagsController < ApplicationController
   end
   
   # 要リファクタリング
+  # @taskはscope使用してモデルへ
   def destroy
     if Tagging.find_by(tag_id: @tag.id)
       @task = Task.find(Tagging.find_by(tag_id: @tag.id).task_id)

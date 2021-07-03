@@ -1,11 +1,12 @@
 <h1>ユーザー検索</h1>
 <hr>
 
-<%= search_form_for @q, url: result_users_path do |f| %>
-  <%= f.label :name_tag_eq, 'ネームタグ' %>
-  <%= f.search_field :name_tag_eq %>
-  <br>
-  <%= f.submit '検索' %>
-  <p>あなたのネームタグは<%= current_user.name_tag %>です</p>
-<% end %>
-
+<div class="user_find">
+  <%= search_form_for @q, url: result_users_path do |f| %>
+    <%= f.label :name_tag_eq, 'ネームタグ' %>
+    <%= f.search_field :name_tag_eq %> <%= f.submit '検索' %>
+    <br><br>
+    
+    <p>あなたのネームタグは<%= current_user.name_tag %>です</p>
+  <% end %>
+</div>
