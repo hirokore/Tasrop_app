@@ -20,6 +20,7 @@
 @import "./tops.scss";
 @import "./footer.scss";
 @import "./progress.scss";
+@import "./form.scss";
 
 h1 {
   margin: 10px 0 0 0;
@@ -233,4 +234,29 @@ form {
 
 .field {
   text-align:center;
+}
+
+td {
+  font-size: 20px;
+}
+
+.mypage_task_title{
+  font-size: 22px;
+}
+
+.mypage_mytask {
+  font-size: 18px;
+  margin-top: 12px;
+}
+
+.mypage_progress{
+  font-size: 18px;
+}
+
+.user_mypage {
+  font-size: 18px;
+}
+
+.user_find {
+  font-size: 18px;
 }
