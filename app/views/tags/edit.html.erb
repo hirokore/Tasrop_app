@@ -1,1 +1,20 @@
 <%= render 'form' , tag: @tag%> 
+
+<div class="">
+  <%= form_with(model: @tag, local: true) do |f| %>
+    <div class="">
+      <%= f.label "タグ名" %><br>
+      <%= f.text_field :name, size: "30", id: "tag_name",  placeholder: "例：IT学習、ピアノ、筋トレ等" %>
+    </div>
+    <div class="">
+      <%= f.label "達成時間" %><br>
+      <%= f.text_field :total_time, size: "30", id: "tag_name",  placeholder: "例：5000" %>
+    </div>
+    <br>
+    <div class=""><%= f.submit "タグ設定" %>
+  <% end %>
+</div>
+<br>
+<div class="">
+  <%= link_to "戻る", customs_path%>
+</div> 
